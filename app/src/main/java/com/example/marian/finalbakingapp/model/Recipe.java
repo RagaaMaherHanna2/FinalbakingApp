@@ -1,76 +1,113 @@
-
 package com.example.marian.finalbakingapp.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
+import java.util.ArrayList;
 
-import javax.annotation.Generated;
-
-@Generated("net.hexar.json2pojo")
-@SuppressWarnings("unused")
-public class Recipe {
-
+public class Recipe implements Parcelable {
+    public Recipe() {
+    }
     @SerializedName("id")
-    private Long mId;
-    @SerializedName("image")
-    private String mImage;
-    @SerializedName("ingredients")
-    private List<Ingredient> mIngredients;
+    private int id;
     @SerializedName("name")
-    private String mName;
-    @SerializedName("servings")
-    private Long mServings;
+    private String name;
+    @SerializedName("ingredients")
+    private ArrayList<Ingredient> ingredients;
     @SerializedName("steps")
-    private List<Step> mSteps;
+    private ArrayList<Step> steps;
+    @SerializedName("servings")
+    private int servings;
+    @SerializedName("image")
+    private String imageUrl;
+    public static final Creator<Recipe> CREATOR = new Creator<Recipe>() {
+        @Override
+        public Recipe createFromParcel(Parcel source) {
+            return new Recipe(source);
+        }
 
-    public Long getId() {
-        return mId;
+        @Override
+        public Recipe[] newArray(int size) {
+            return new Recipe[size];
+        }
+    };
+
+    protected Recipe(Parcel in) {
+        this.id = in.readInt();
+        this.name = in.readString();
+        this.ingredients = in.createTypedArrayList(Ingredient.CREATOR);
+        this.steps = in.createTypedArrayList(Step.CREATOR);
+    }
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.id);
+        dest.writeString(this.name);
+        dest.writeTypedList(this.ingredients);
+        dest.writeTypedList(this.steps);
     }
 
-    public void setId(Long id) {
-        mId = id;
+
+
+    public int getServings() {
+        return servings;
     }
 
-    public String getImage() {
-        return mImage;
+    public Recipe setServings(int servings) {
+        this.servings = servings;
+        return this;
     }
 
-    public void setImage(String image) {
-        mImage = image;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public List<Ingredient> getIngredients() {
-        return mIngredients;
+    public Recipe setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+        return this;
     }
 
-    public void setIngredients(List<Ingredient> ingredients) {
-        mIngredients = ingredients;
+    public int getId() {
+        return id;
+    }
+
+    public Recipe setId(int id) {
+        this.id = id;
+        return this;
     }
 
     public String getName() {
-        return mName;
+        return name;
     }
 
-    public void setName(String name) {
-        mName = name;
+    public Recipe setName(String name) {
+        this.name = name;
+        return this;
     }
 
-    public Long getServings() {
-        return mServings;
+    public ArrayList<Ingredient> getIngredients() {
+        return ingredients;
     }
 
-    public void setServings(Long servings) {
-        mServings = servings;
+    public Recipe setIngredients(ArrayList<Ingredient> ingredients) {
+        this.ingredients = ingredients;
+        return this;
     }
 
-    public List<Step> getSteps() {
-        return mSteps;
+    public ArrayList<Step> getSteps() {
+        return steps;
     }
 
-    public void setSteps(List<Step> steps) {
-        mSteps = steps;
+    public Recipe setSteps(ArrayList<Step> steps) {
+        this.steps = steps;
+        return this;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
 
 }

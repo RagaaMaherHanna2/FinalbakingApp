@@ -1,42 +1,81 @@
-
 package com.example.marian.finalbakingapp.model;
 
-import javax.annotation.Generated;
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
-@Generated("net.hexar.json2pojo")
-@SuppressWarnings("unused")
-public class Ingredient {
-
-    @SerializedName("ingredient")
-    private String mIngredient;
-    @SerializedName("measure")
-    private String mMeasure;
-    @SerializedName("quantity")
-    private Long mQuantity;
-
-    public String getIngredient() {
-        return mIngredient;
+public class Ingredient implements Parcelable
+{
+    public Ingredient() {
     }
 
-    public void setIngredient(String ingredient) {
-        mIngredient = ingredient;
+    protected Ingredient(Parcel in) {
+        this.quantity = in.readInt();
+        this.measure = in.readString();
+        this.ingredient = in.readString();
+    }
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.quantity);
+        dest.writeString(this.measure);
+        dest.writeString(this.ingredient);
+    }
+
+
+    @SerializedName("quantity")
+    private int quantity;
+    @SerializedName("measure")
+    private String measure;
+    @SerializedName("ingredient")
+    private String ingredient;
+
+    public static final Creator<Ingredient> CREATOR = new Creator<Ingredient>()
+    {
+        @Override
+        public Ingredient createFromParcel(Parcel source) {
+            return new Ingredient(source);
+        }
+
+        @Override
+        public Ingredient[] newArray(int size) {
+            return new Ingredient[size];
+        }
+    };
+
+
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public Ingredient setQuantity(int quantity) {
+        this.quantity = quantity;
+        return this;
     }
 
     public String getMeasure() {
-        return mMeasure;
+        return measure;
     }
 
-    public void setMeasure(String measure) {
-        mMeasure = measure;
+    public Ingredient setMeasure(String measure) {
+        this.measure = measure;
+        return this;
     }
 
-    public Long getQuantity() {
-        return mQuantity;
+    public String getIngredient() {
+        return ingredient;
     }
 
-    public void setQuantity(Long quantity) {
-        mQuantity = quantity;
+    public Ingredient setIngredient(String ingredient) {
+        this.ingredient = ingredient;
+        return this;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
 
 }
