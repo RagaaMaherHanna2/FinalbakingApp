@@ -9,7 +9,7 @@
     android:divider="?android:attr/dividerHorizontal"
     android:orientation="horizontal"
     android:showDividers="middle"
-    tools:context="com.example.marian.finalbakingapp.stepListActivity">
+    tools:context="com.example.marian.finalbakingapp.activity.StepListActivity">
 
     <!--
     This layout is a two-pane layout for the Items
@@ -26,8 +26,8 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         app:layoutManager="LinearLayoutManager"
-        tools:context="com.example.marian.finalbakingapp.stepListActivity"
-        tools:listitem="@layout/step_list_content" />
+        tools:context="com.example.marian.finalbakingapp.activity.StepListActivity"
+        tools:listitem="@layout/step_list_item" />
 
     <FrameLayout
         android:id="@+id/step_detail_container"

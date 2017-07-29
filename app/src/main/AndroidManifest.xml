@@ -20,17 +20,17 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".stepListActivity"
+            android:name=".activity.StepListActivity"
             android:label="@string/title_step_list"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".stepDetailActivity"
+            android:name=".activity.StepDetailActivity"
             android:label="@string/title_step_detail"
-            android:parentActivityName=".stepListActivity"
+            android:parentActivityName=".activity.StepListActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.marian.finalbakingapp.stepListActivity" />
+                android:value="com.example.marian.finalbakingapp.activity.StepListActivity" />
         </activity>
     </application>
 

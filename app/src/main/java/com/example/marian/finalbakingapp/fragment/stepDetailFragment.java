@@ -1,4 +1,4 @@
-package com.example.marian.finalbakingapp;
+package com.example.marian.finalbakingapp.fragment;
 
 import android.app.Activity;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -9,12 +9,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.marian.finalbakingapp.R;
+import com.example.marian.finalbakingapp.activity.StepDetailActivity;
+import com.example.marian.finalbakingapp.activity.StepListActivity;
 import com.example.marian.finalbakingapp.dummy.DummyContent;
 
 /**
  * A fragment representing a single step detail screen.
- * This fragment is either contained in a {@link stepListActivity}
- * in two-pane mode (on tablets) or a {@link stepDetailActivity}
+ * This fragment is either contained in a {@link StepListActivity}
+ * in two-pane mode (on tablets) or a {@link StepDetailActivity}
  * on handsets.
  */
 public class stepDetailFragment extends Fragment {

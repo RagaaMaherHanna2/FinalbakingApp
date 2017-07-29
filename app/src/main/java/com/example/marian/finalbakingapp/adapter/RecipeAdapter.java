@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.marian.finalbakingapp.R;
-import com.example.marian.finalbakingapp.activity.IngredientStepActivity;
+import com.example.marian.finalbakingapp.activity.StepListActivity;
 import com.example.marian.finalbakingapp.model.Recipe;
 
 import java.util.ArrayList;
@@ -94,7 +94,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
         public void onClick(View v)
         {
             //when he clicks on the recyclerView go to the ingredientStepActivity
-            Intent intent = new Intent(mContext, IngredientStepActivity.class);
+            Intent intent = new Intent(mContext, StepListActivity.class);
             //pass the recipe that he touched to the activity
             intent.putExtra(RECIPE,mRecipes.get(getAdapterPosition()));
 
