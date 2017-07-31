@@ -1,10 +1,7 @@
 package com.example.marian.finalbakingapp.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
 
 import com.example.marian.finalbakingapp.R;
 import com.example.marian.finalbakingapp.fragment.stepDetailFragment;
@@ -15,14 +12,15 @@ import com.example.marian.finalbakingapp.fragment.stepDetailFragment;
  * item details are presented side-by-side with a list of items
  * in a {@link StepListActivity}.
  */
-public class StepDetailActivity extends AppCompatActivity {
+public class StepDetailActivity extends AppCompatActivity
+{
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_step_detail);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
-        setSupportActionBar(toolbar);
+        setContentView(R.layout.step_detail);
 
 
         // savedInstanceState is non-null when there is fragment state
@@ -43,24 +41,24 @@ public class StepDetailActivity extends AppCompatActivity {
             stepDetailFragment fragment = new stepDetailFragment();
             fragment.setArguments(arguments);
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.step_detail_container, fragment)
+                    .add(R.id.step_detail, fragment)
                     .commit();
         }
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == android.R.id.home) {
-            // This ID represents the Home or Up button. In the case of this
-            // activity, the Up button is shown. For
-            // more details, see the Navigation pattern on Android Design:
-            //
-            // http://developer.android.com/design/patterns/navigation.html#up-vs-back
-            //
-            navigateUpTo(new Intent(this, StepListActivity.class));
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        int id = item.getItemId();
+//        if (id == android.R.id.home) {
+//            // This ID represents the Home or Up button. In the case of this
+//            // activity, the Up button is shown. For
+//            // more details, see the Navigation pattern on Android Design:
+//            //
+//            // http://developer.android.com/design/patterns/navigation.html#up-vs-back
+//            //
+//            navigateUpTo(new Intent(this, StepListActivity.class));
+//            return true;
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
 }

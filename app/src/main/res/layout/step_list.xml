@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+<fragment
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/step_list"
-    android:name="com.example.marian.finalbakingapp.stepListFragment"
+    android:id="@+id/list_fragment"
+    android:name="com.example.marian.finalbakingapp.fragment.StepsFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp"
-    app:layoutManager="LinearLayoutManager"
-    tools:context="com.example.marian.finalbakingapp.activity.StepListActivity"
-    tools:listitem="@layout/step_list_item" />
+    tools:context=".activity.StepDetailActivity"
+    tools:layout="@layout/step_fragment" />

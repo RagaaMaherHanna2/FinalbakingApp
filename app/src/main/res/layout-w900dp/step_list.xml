@@ -1,5 +1,5 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,31 +8,41 @@
     android:baselineAligned="false"
     android:divider="?android:attr/dividerHorizontal"
     android:orientation="horizontal"
-    android:showDividers="middle"
     tools:context="com.example.marian.finalbakingapp.activity.StepListActivity">
 
     <!--
     This layout is a two-pane layout for the Items
     master/detail flow.
-    
+
     -->
 
-    <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/step_list"
-        android:name="com.example.marian.finalbakingapp.stepListFragment"
-        android:layout_width="@dimen/item_width"
+    <fragment
+        android:id="@+id/master_list_fragment"
+        android:name="com.example.savior.bakingapp.StepsFragment"
+        android:layout_width="300dp"
         android:layout_height="match_parent"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        app:layoutManager="LinearLayoutManager"
-        tools:context="com.example.marian.finalbakingapp.activity.StepListActivity"
-        tools:listitem="@layout/step_list_item" />
+        tools:layout="@layout/step_fragment" />
 
-    <FrameLayout
-        android:id="@+id/step_detail_container"
-        android:layout_width="0dp"
+    <View
+        android:layout_width="1dp"
         android:layout_height="match_parent"
-        android:layout_weight="3" />
+        android:background="@android:color/holo_red_light" />
+
+    <LinearLayout
+        android:id="@+id/tablet_linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:padding="@dimen/margin">
+
+        <FrameLayout
+            android:id="@+id/step_frame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout="@layout/step_detail_ fragment" />
+
+    </LinearLayout>
 
 </LinearLayout>

@@ -9,10 +9,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.example.marian.finalbakingapp.R;
 import com.example.marian.finalbakingapp.activity.StepListActivity;
 import com.example.marian.finalbakingapp.model.Recipe;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -24,15 +24,15 @@ import static com.example.marian.finalbakingapp.activity.MainActivity.RECIPE;
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder> {
 
 
-    private Context mContext;
-    private ArrayList<Recipe> mRecipes;
+    private Context context;
+    private ArrayList<Recipe> recipes;
 
-    public RecipeAdapter(final Context context, ArrayList<Recipe> mRecipes)
+    public RecipeAdapter(final Context context, ArrayList<Recipe> recipes)
     {
         //get the context from the activity
-        this.mContext = context;
+        this.context = context;
         //get the passed arrayList
-        this.mRecipes = mRecipes;
+        this.recipes = recipes;
     }
 
     @Override
@@ -44,27 +44,27 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
     }
 
     @Override
-    public void onBindViewHolder(final RecipeViewHolder holder, final int position) {
-       //check fo the orientation
-        holder.setRecipeName(mRecipes.get(position).getName());
-        holder.setRecipeImage(mContext, mRecipes.get(position).getImageUrl());
+    public void onBindViewHolder(final RecipeViewHolder holder, final int position)
+    {
+        holder.onRelate(position);
+
     }
 
     @Override
-    public int getItemCount() {
-        if (mRecipes == null) {
+    public int getItemCount()
+    {
+        if (recipes == null)
+        {
             return 0;
         }
-        return mRecipes.size();
+        return recipes.size();
     }
 
     class RecipeViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
     {
 
-        @BindView(R.id.tv_recipe_name)
-        TextView mRecipeName;
-        @BindView(R.id.iv_recipe_image)
-        ImageView mRecipeImage;
+        @BindView(R.id.tv_recipe_name) TextView mRecipeName;
+        @BindView(R.id.iv_recipe_image) ImageView mRecipeImage;
 
         public RecipeViewHolder(final View itemView)
         {
@@ -74,31 +74,38 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
             itemView.setOnClickListener(this);
         }
 
-        void setRecipeName(final String recipeName)
+        void onRelate(int position)
         {
-            mRecipeName.setText(recipeName);
-        }
 
-        void setRecipeImage(final Context context, final String recipeImage)
-        {
-            if (!recipeImage.isEmpty())
+
+            if (!recipes.isEmpty())
             {
-                mRecipeImage.setVisibility(View.VISIBLE);
-                Glide.with(context)
-                        .load(recipeImage)
-                        .into(mRecipeImage);
+                if (!recipes.get(position).getImageUrl().isEmpty())
+                {
+                    mRecipeImage.setVisibility(View.VISIBLE);
+                    Picasso.with(context)
+                            .load(recipes.get(position).getImageUrl())
+                            .into(mRecipeImage);
+                }
+                else
+                {
+                    mRecipeImage.setImageResource(R.drawable.recipe_icon);
+
+                    mRecipeName.setText(recipes.get(position).getName());
+                }
+
+
             }
         }
-
-        @Override
+                @Override
         public void onClick(View v)
         {
             //when he clicks on the recyclerView go to the ingredientStepActivity
-            Intent intent = new Intent(mContext, StepListActivity.class);
+            Intent intent = new Intent(context, StepListActivity.class);
             //pass the recipe that he touched to the activity
-            intent.putExtra(RECIPE,mRecipes.get(getAdapterPosition()));
+            intent.putExtra(RECIPE, recipes.get(getAdapterPosition()));
 
-            mContext.startActivity(intent);
+            context.startActivity(intent);
         }
     }
 }

@@ -72,6 +72,10 @@ public class Ingredient implements Parcelable
         return this;
     }
 
+    public String getAll() {
+        return ingredient;
+    }
+
     @Override
     public int describeContents() {
         return 0;
