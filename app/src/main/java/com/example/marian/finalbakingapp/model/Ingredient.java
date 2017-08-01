@@ -75,9 +75,10 @@ public class Ingredient implements Parcelable
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.ingredient);
         dest.writeInt(this.quantity);
         dest.writeString(this.measure);
-        dest.writeString(this.ingredient);
+
     }
 
     @Override

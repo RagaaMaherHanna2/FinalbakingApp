@@ -73,8 +73,10 @@ public class StepListFragment extends Fragment
         ingredients = recipe.getIngredients();
 
         //set Adapters for ingredients and steps
+
         stepAdapter = new StepAdapter(recipe,getContext(),recipeSelected);
         rvSteps.setAdapter(stepAdapter);
+
         ingredientAdapter = new IngredientAdapter(ingredients);
         rvIngredients.setAdapter(ingredientAdapter);
 

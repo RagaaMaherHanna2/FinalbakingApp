@@ -88,7 +88,7 @@ public class StepListActivity extends AppCompatActivity implements StepAdapter.O
         {
             stepDetailFragment fragment = new stepDetailFragment();
 
-            arguments.putInt(stepDetailFragment.ARG_ITEM_ID, position);
+            arguments.putInt(POSITION, position);
             arguments.putBoolean(PANES, mTwoPane);
             arguments.putParcelableArrayList(STEPS, recipe.getSteps());
 
@@ -103,7 +103,7 @@ public class StepListActivity extends AppCompatActivity implements StepAdapter.O
         {
             stepDetailFragment fragment = new stepDetailFragment();
 
-            arguments.putInt(stepDetailFragment.ARG_ITEM_ID, position);
+            arguments.putInt(POSITION, position);
             arguments.putBoolean(PANES, mTwoPane);
 
             fragment.setArguments(arguments);
@@ -112,7 +112,7 @@ public class StepListActivity extends AppCompatActivity implements StepAdapter.O
         }
         else
             {
-            arguments.putInt(stepDetailFragment.ARG_ITEM_ID, position);
+            arguments.putInt(POSITION, position);
             arguments.putBoolean(PANES, mTwoPane);
             arguments.putParcelableArrayList(STEPS, recipe.getSteps());
 
