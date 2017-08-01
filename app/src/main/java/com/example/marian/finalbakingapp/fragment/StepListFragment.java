@@ -27,13 +27,9 @@ import static com.example.marian.finalbakingapp.activity.MainActivity.RECIPE;
  * Created by Marian on 7/30/2017.
  */
 
-public class StepsFragment extends Fragment
+public class StepListFragment extends Fragment
 {
 
-    @BindView(R.id.rv_ingredients)
-    RecyclerView rvIngredients;
-    @BindView(R.id.rv_steps)
-    RecyclerView rvSteps;
 
     private Recipe recipe;
     private IngredientAdapter ingredientAdapter;
@@ -41,8 +37,13 @@ public class StepsFragment extends Fragment
     private StepAdapter stepAdapter;
     private StepAdapter.OnRecipeListener recipeSelected;
 
+    @BindView(R.id.rv_ingredients)
+    RecyclerView rvIngredients;
+    @BindView(R.id.rv_steps)
+    RecyclerView rvSteps;
 
-    public StepsFragment()
+
+    public StepListFragment()
     {
 
     }

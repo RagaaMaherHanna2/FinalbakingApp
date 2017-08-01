@@ -5,6 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.example.marian.finalbakingapp.R;
 import com.example.marian.finalbakingapp.fragment.stepDetailFragment;
+import com.example.marian.finalbakingapp.model.Step;
+
+import java.util.ArrayList;
+
+import static com.example.marian.finalbakingapp.activity.StepListActivity.STEPS;
 
 /**
  * An activity representing a single step detail screen. This
@@ -12,13 +17,14 @@ import com.example.marian.finalbakingapp.fragment.stepDetailFragment;
  * item details are presented side-by-side with a list of items
  * in a {@link StepListActivity}.
  */
-public class StepDetailActivity extends AppCompatActivity
-{
+public class StepDetailActivity extends AppCompatActivity {
 
+    int position;
+    boolean TowPane;
+    ArrayList<Step> steps;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.step_detail);
 
@@ -33,12 +39,20 @@ public class StepDetailActivity extends AppCompatActivity
         // http://developer.android.com/guide/components/fragments.html
         //
         if (savedInstanceState == null) {
+            position = getIntent().getIntExtra(StepListActivity.POSITION, 0);
+            TowPane = getIntent().getBooleanExtra(StepListActivity.PANES, false);
+            steps = getIntent().getParcelableArrayListExtra(STEPS);
+
+            stepDetailFragment fragment = new stepDetailFragment();
+
             // Create the detail fragment and add it to the activity
             // using a fragment transaction.
             Bundle arguments = new Bundle();
-            arguments.putString(stepDetailFragment.ARG_ITEM_ID,
-                    getIntent().getStringExtra(stepDetailFragment.ARG_ITEM_ID));
-            stepDetailFragment fragment = new stepDetailFragment();
+
+            arguments.putInt(StepListActivity.POSITION, position);
+            arguments.putBoolean(StepListActivity.PANES, TowPane);
+            arguments.putParcelableArrayList(STEPS, steps);
+
             fragment.setArguments(arguments);
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.step_detail, fragment)
@@ -46,19 +60,4 @@ public class StepDetailActivity extends AppCompatActivity
         }
     }
 
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        int id = item.getItemId();
-//        if (id == android.R.id.home) {
-//            // This ID represents the Home or Up button. In the case of this
-//            // activity, the Up button is shown. For
-//            // more details, see the Navigation pattern on Android Design:
-//            //
-//            // http://developer.android.com/design/patterns/navigation.html#up-vs-back
-//            //
-//            navigateUpTo(new Intent(this, StepListActivity.class));
-//            return true;
-//        }
-//        return super.onOptionsItemSelected(item);
-//    }
 }

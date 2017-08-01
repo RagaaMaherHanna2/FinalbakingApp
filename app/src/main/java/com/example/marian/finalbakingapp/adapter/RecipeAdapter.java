@@ -20,7 +20,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import static com.example.marian.finalbakingapp.activity.MainActivity.RECIPE;
-
+/**
+ * Created by marian on 7/30/2017.
+ */
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder> {
 
 
@@ -46,7 +48,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
     @Override
     public void onBindViewHolder(final RecipeViewHolder holder, final int position)
     {
-        holder.onRelate(position);
+        holder.onHolder(position);
 
     }
 
@@ -74,7 +76,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
             itemView.setOnClickListener(this);
         }
 
-        void onRelate(int position)
+        void onHolder(int position)
         {
 
 

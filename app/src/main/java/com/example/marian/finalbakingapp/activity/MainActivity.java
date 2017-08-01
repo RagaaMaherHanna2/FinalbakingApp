@@ -25,13 +25,18 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity {
-@BindView(R.id.rv_recipe) RecyclerView mRecyclerView;
-    @BindView(R.id.progressBar) ProgressBar mProgressBar;
+public class MainActivity extends AppCompatActivity
+{
+    @BindView(R.id.rv_recipe)
+    RecyclerView mRecyclerView;
+    @BindView(R.id.progressBar)
+    ProgressBar mProgressBar;
     private ArrayList<Recipe> mRecipes;
     public static final String RECIPE = "recipe";
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
@@ -51,16 +56,17 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void getRecipes() {
+    private void getRecipes()
+    {
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
 
-        final Type TYPE = new TypeToken<ArrayList<Recipe>>() {}.getType();
+        final Type TYPE = new TypeToken<ArrayList<Recipe>>()
+        {}.getType();
+
         Call<JsonArray> call = apiInterface.getRecipe();
-        call.enqueue(new Callback<JsonArray>()
-        {
+        call.enqueue(new Callback<JsonArray>() {
             @Override
-            public void onResponse(Call<JsonArray> call, Response<JsonArray> response)
-            {
+            public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
                 mRecipes = new Gson().fromJson(response.body(), TYPE);
 
                 mProgressBar.setVisibility(View.INVISIBLE);
@@ -78,7 +84,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
+    protected void onSaveInstanceState(Bundle outState)
+    {
         super.onSaveInstanceState(outState);
         outState.putParcelableArrayList(RECIPE, mRecipes);
     }

@@ -8,6 +8,6 @@
         android:id="@+id/action_widget"
         android:icon="@drawable/ic_favorite_widget"
         android:orderInCategory="1"
-        android:title="@string/action_widget"
+        android:title="@string/favorite"
         app:showAsAction="always" />
 </menu>

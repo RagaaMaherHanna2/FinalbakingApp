@@ -8,8 +8,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 
 public class Recipe implements Parcelable {
-    public Recipe() {
-    }
+
     @SerializedName("id")
     private int id;
     @SerializedName("name")
@@ -22,6 +21,9 @@ public class Recipe implements Parcelable {
     private int servings;
     @SerializedName("image")
     private String imageUrl;
+
+    public Recipe() {
+    }
     public static final Creator<Recipe> CREATOR = new Creator<Recipe>() {
         @Override
         public Recipe createFromParcel(Parcel source) {
@@ -39,14 +41,10 @@ public class Recipe implements Parcelable {
         this.name = in.readString();
         this.ingredients = in.createTypedArrayList(Ingredient.CREATOR);
         this.steps = in.createTypedArrayList(Step.CREATOR);
+        this.imageUrl = in.readString();
+        this.servings = in.readInt();
     }
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(this.id);
-        dest.writeString(this.name);
-        dest.writeTypedList(this.ingredients);
-        dest.writeTypedList(this.steps);
-    }
+
 
 
 
@@ -110,4 +108,14 @@ public class Recipe implements Parcelable {
     }
 
 
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.id);
+        dest.writeString(this.name);
+        dest.writeTypedList(this.ingredients);
+        dest.writeTypedList(this.steps);
+        dest.writeString(this.imageUrl);
+        dest.writeInt(this.servings);
+
+    }
 }

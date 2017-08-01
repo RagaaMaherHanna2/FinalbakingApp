@@ -13,7 +13,7 @@ import com.example.marian.finalbakingapp.database.Contract.RecipeEntry;
 import static com.example.marian.finalbakingapp.database.Contract.RECIPE_CONTENT_URI;
 
 /**
- * Created by savior on 7/18/2017.
+ * Created by marian on 7/31/2017.
  */
 
 public class BakingRemoteView extends RemoteViewsService

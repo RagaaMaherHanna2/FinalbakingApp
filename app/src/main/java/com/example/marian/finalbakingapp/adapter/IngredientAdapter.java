@@ -36,16 +36,6 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.In
     }
 
 
-
-    @Override
-    public void onBindViewHolder(IngredientViewHolder holder, int position)
-    {
-        holder.tvIngredient.setText(mIngredient.get(position).getAll());
-        holder.tvQuantity.setText(Integer.toString(mIngredient.get(position).getQuantity()));
-        holder.tvMeasure.setText(mIngredient.get(position).getMeasure());
-
-    }
-
     @Override
     public int getItemCount()
     {
@@ -69,5 +59,14 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.In
             super(itemView);
             ButterKnife.bind(this,itemView);
         }
+    }
+
+    @Override
+    public void onBindViewHolder(IngredientViewHolder holder, int position)
+    {
+        holder.tvIngredient.setText(mIngredient.get(position).getIngredient());
+        holder.tvQuantity.setText(Integer.toString(mIngredient.get(position).getQuantity()));
+        holder.tvMeasure.setText(mIngredient.get(position).getMeasure());
+
     }
 }

@@ -18,11 +18,18 @@ import butterknife.ButterKnife;
  * Created by Marian on 7/29/2017.
  */
 
-public class StepAdapter extends RecyclerView.Adapter<StepAdapter.ViewHolder> {
+public class StepAdapter extends RecyclerView.Adapter<StepAdapter.ViewHolder>
+{
 
     private final Recipe mRecipe;
     private Context mContext;
     private final OnRecipeListener monRecipeListener;
+
+
+    public interface OnRecipeListener
+    {
+        void onRecipeSelected(int position);
+    }
 
     public StepAdapter(Recipe item, Context context, OnRecipeListener onRecipeListener)
     {
@@ -30,6 +37,7 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.ViewHolder> {
         mRecipe = item;
         monRecipeListener = onRecipeListener;
     }
+
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
@@ -43,12 +51,13 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.ViewHolder> {
     public void onBindViewHolder(final ViewHolder holder, int position)
     {
 
-        holder.mTextView.setText(String.valueOf(mRecipe.getSteps()
-                .get(position).getShortDescription()));
+        holder.mTextView.setText(mRecipe.getSteps()
+                .get(position).getShortDescription());
     }
 
     @Override
-    public int getItemCount() {
+    public int getItemCount()
+    {
         if (mRecipe == null)
             return 0;
         return mRecipe.getSteps().size();
@@ -77,10 +86,7 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.ViewHolder> {
         }
     }
 
-    public interface OnRecipeListener
-    {
-     void onRecipeSelected(int position);
-    }
+
 
 
 }

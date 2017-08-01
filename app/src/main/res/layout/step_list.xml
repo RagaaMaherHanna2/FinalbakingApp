@@ -4,7 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/list_fragment"
-    android:name="com.example.marian.finalbakingapp.fragment.StepsFragment"
+    android:name="com.example.marian.finalbakingapp.fragment.StepListFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.StepDetailActivity"
